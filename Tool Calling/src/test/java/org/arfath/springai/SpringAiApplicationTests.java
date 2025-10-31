@@ -1,5 +1,6 @@
 package org.arfath.springai;
 
+import org.arfath.springai.tools.WeatherTool;
 import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +11,14 @@ class SpringAiApplicationTests {
 
     @Autowired
     private ChatClient chatClient;
+    @Autowired
+    private WeatherTool weatherTool;
+
 
     @Test
-    public void testChatClient(){
-        System.out.println("testing chat client");
-
-        String query = "what can you do";
-
-        String response = chatClient.prompt()
-                .user(query)
-                .call()
-                .content();
-        System.out.println(response);
+    void getWeatherTest(){
+        var weatherData = weatherTool.getWeatherData("chicago");
+        System.out.println(weatherData);
     }
 
 

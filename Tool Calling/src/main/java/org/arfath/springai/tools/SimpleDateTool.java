@@ -16,6 +16,7 @@ public class SimpleDateTool {
 
     @Tool(description = "get the current date and time in the user zone")
     public String getCurrentDateAndTime(){
+        System.out.println(" date tool called");
         return LocalDateTime.now()
                 .atZone(LocaleContextHolder
                         .getTimeZone()
